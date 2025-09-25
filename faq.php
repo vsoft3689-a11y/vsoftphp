@@ -2,42 +2,42 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>VsoftSolutions</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+  <meta charset="utf-8">
+  <title>VsoftSolutions</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <!-- Libraries Stylesheet -->
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-    
+  <!-- Template Stylesheet -->
+  <link href="css/style.css" rel="stylesheet">
 
-<!-- Custom CSS -->
+
+  <!-- Custom CSS -->
   <style>
     body {
-      background-color: #fff; /* Clean white background */
+      background-color: #fff;
       font-family: 'Nunito', sans-serif;
     }
 
@@ -59,11 +59,11 @@
     }
 
     .accordion-button {
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: #000000; /* Change to black text for better contrast */
-    background-color: #d0e7ff; /* Light blue */
-}
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #000000;
+      background-color: #d0e7ff;
+    }
 
     .accordion-button:hover {
       background-color: #0b5ed7;
@@ -90,23 +90,20 @@
     }
 
     .accordion-button::after {
-      filter: brightness(0) invert(1); /* Makes arrow white */
+      filter: brightness(0) invert(1);
+      /* Makes arrow white */
     }
   </style>
 </head>
+
 <body>
-    <!-- Navbar Start -->
-     <?php include 'navbar.php'; ?>
-
-     <!-- Navbar End -->
-
-    
+  <!-- Navbar Start -->
+  <?php include 'navbar.php'; ?>
+  <!-- Navbar End -->
 
   <div class="container faq-section">
     <h1>Frequently Asked Questions</h1>
-
     <div class="accordion" id="faqAccordion">
-
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
@@ -197,18 +194,15 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
-   <!-- Footer Start -->
-    
-    <?php include 'footer.php'; ?>
 
-    <!-- Footer End -->
-
+  <!-- Footer Start -->
+  <?php include 'footer.php'; ?>
+  <!-- Footer End -->
 
   <!-- Bootstrap Bundle with Popper (Required for accordion) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
+
 </html>

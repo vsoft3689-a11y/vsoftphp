@@ -1,16 +1,9 @@
-<?php
-// include './config/database.php';
-
-// Connect to DB
-// $conn = (new Database())->connect();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>VSoftSolutions Admin Panel</title>
+    <title>VSoftSolutions</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -41,7 +34,7 @@
 <body>
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="index.php" class="navbar-logo">
+        <a href="index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5 navbar-logo">
             <img src="./img/logo.webp"
                 alt="VSoft Solutions Pvt Ltd Logo" style="height:48px; width:auto; display:block; object-fit:contain;" />
         </a>
@@ -57,8 +50,10 @@
                 <a href="./internship.php" class="nav-item nav-link ">Internship</a>
                 <a href="./contact.php" class="nav-item nav-link">Contact</a>
             </div>
-            <a href="./login.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a>
-              
+
+            <div class="d-flex align-items-center ms-3 text-center">
+                <a href="./login.php" class="btn btn-primary py-4 px-5">Join Now<i class="fa fa-arrow-right ms-3"></i></a>
+            </div>
         </div>
     </nav>
 

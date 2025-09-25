@@ -1,23 +1,20 @@
 <?php
-    require_once "./config/database.php";  // Use require_once to prevent duplicate class declarations
+include_once __DIR__ . "/config/database.php";
 
-    $conn = (new Database())->connect();
+$conn = (new Database())->connect();
 
-    if (!$conn || $conn->connect_error) {
-        die("Database connection failed: " . $conn->connect_error);
+if (!$conn || $conn->connect_error) {
+    die("Database connection failed: " . $conn->connect_error);
+}
+
+// Fetch all site configurations into an array
+$configs = [];
+$result = $conn->query("SELECT config_key, config_value FROM site_configurations");
+if ($result && $result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $configs[$row['config_key']] = $row['config_value'];
     }
-
-    // Rest of your code ...
-
-
-    // Fetch all site configurations into an array
-    $configs = [];
-    $result = $conn->query("SELECT config_key, config_value FROM site_configurations");
-    if ($result && $result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $configs[$row['config_key']] = $row['config_value'];
-        }
-    }
+}
 ?>
 
 <!-- Footer Start -->
@@ -89,7 +86,7 @@
         <div class="copyright">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="border-bottom" href="#">Vsofts Solutions</a>, All Rights Reserved.  
+                    &copy; <a class="border-bottom" href="#">VSOFTSSolutions</a>, All Rights Reserved.
                     Designed By <a class="border-bottom" href="./">westechnologies.in</a>
                 </div>
                 <div class="col-md-6 text-center text-md-end">

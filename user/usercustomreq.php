@@ -1,15 +1,13 @@
 <?php 
-session_start();
-header('Cache-Control: no-cache, no-store, must-revalidate');
-header('Pragma: no-cache');
-header('Expires: 0');
-include __DIR__ . '/auth.php';
+// header('Cache-Control: no-cache, no-store, must-revalidate');
+// header('Pragma: no-cache');
+// header('Expires: 0');
 include '../config/database.php';
-// session_start();
 
+session_start();
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'user') {
     header("Location: ../login.php");
-  exit();
+    exit();
 }
 
 $conn = (new Database())->connect();
@@ -109,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   </div>
 
   <!-- Footer Start -->
-<?php include '../admin/footer.php'; ?>
+<?php include '../footer.php'; ?>
   <!-- Footer End -->
 
 

@@ -1,12 +1,12 @@
 <?php
-include __DIR__ . '/auth.php';
 include '../config/database.php';
-// session_start();
 
+session_start();
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'user') {
     header("Location: ../login.php");
-  exit();
+    exit();
 }
+
 $conn = (new Database())->connect();
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
@@ -170,16 +170,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <button type="submit" class="btn btn-success">Save Changes</button>
               </div>
             </form>
-
           </div>
         </div>
-
       </div>
     </div>
   </div>
 
   <!-- Footer Start -->
-<?php include '../admin/footer.php'; ?>
+  <?php include '../footer.php'; ?>
   <!-- Footer End -->
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

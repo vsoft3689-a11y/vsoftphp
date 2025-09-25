@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terms and Conditions | VSoft</title>
-  
+
   <!-- Favicon -->
   <link href="img/favicon.ico" rel="icon">
 
@@ -25,50 +26,45 @@
 
   <style>
     body {
+      background-color: #fff;
       font-family: 'Heebo', sans-serif;
     }
 
-   .terms-container {
-  padding: 2.5rem 2rem;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  margin-top: 2rem;
-  margin-bottom: 4rem;
-  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.15);
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: #444;
-  max-width: 900px; /* Optional: limit width for better reading */
-}
+    .terms-container {
+      padding: 2.5rem 2rem;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      margin-top: 2rem;
+      margin-bottom: 4rem;
+      box-shadow: 0 4px 12px rgba(13, 110, 253, 0.15);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #444;
+      max-width: 900px;
+    }
 
-.terms-container h4 {
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: #0d6efd; /* Bootstrap primary */
-}
+    .terms-container h4 {
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #0d6efd;
+    }
 
-.terms-container h6 {
-  font-weight: 600;
-  margin-top: 1.8rem;
-  margin-bottom: 0.6rem;
-  color: #0d6efd;
-}
+    .terms-container h6 {
+      font-weight: 600;
+      margin-top: 1.8rem;
+      margin-bottom: 0.6rem;
+      color: #0d6efd;
+    }
 
-.terms-container p,
-.terms-container ul {
-  margin-bottom: 1rem;
-  font-size:14px;
-}
+    .terms-container p,
+    .terms-container ul {
+      margin-bottom: 1rem;
+      font-size: 14px;
+    }
 
-.terms-container ul li {
-  margin-bottom: 0.5rem;
-}
-
-body {
-  background-color: #fff; /* Make sure background is clean */
-  font-family: 'Heebo', sans-serif;
-}
-
+    .terms-container ul li {
+      margin-bottom: 0.5rem;
+    }
   </style>
 </head>
 
@@ -122,6 +118,6 @@ body {
   <!-- Footer Start -->
   <?php include 'footer.php'; ?>
   <!-- Footer End -->
-
 </body>
+
 </html>

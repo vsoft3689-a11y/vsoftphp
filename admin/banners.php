@@ -28,6 +28,10 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
             color: #333;
         }
 
+        h2{
+            text-align: center;
+        }
+
         #createForm {
             margin-bottom: 30px;
             padding: 20px;
@@ -138,8 +142,6 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
             <button id="btn" type="submit">Add Banner</button>
         </form>
     </div>
-
-    <hr>
 
     <section class="load-banners">
         <h2>Banner List</h2>

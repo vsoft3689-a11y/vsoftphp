@@ -1,11 +1,3 @@
-<?php 
-// session_start();
-if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'user') {
-    header("Location: ../login.php");
-  exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,21 +46,19 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'user') {
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="./user_dashboard.php" class="nav-item nav-link">Dashboard</a>
                 <a href="./profile.php" class="nav-item nav-link">Profile</a>
-                <a href="./userprojects.php" class="nav-item nav-link">Projects</a>             
+                <a href="./userprojects.php" class="nav-item nav-link">Projects</a>
                 <a href="./usercustomreq.php" class="nav-item nav-link">Custom Requirements</a>
                 <a href="./userrequirementstatus.php" class="nav-item nav-link">Requirements status</a>
                 <a href="./projecthistory.php" class="nav-item nav-link">Project History</a>
-                
             </div>
-            <!-- <a href="./login.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a> -->
-            <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'user'): ?>
-                <!-- Show only when logged in -->
-                <a href="../logout.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Logout</a>
-            <?php else: ?>
-                <!-- Show only when logged out -->
-                <a href="../login.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Login</a>
-            <?php endif; ?>
-        </div>
+
+            <div class="d-flex align-items-center ms-3 text-center">
+                <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'user'): ?>
+                    <a href="../logout.php" class="btn btn-primary py-4 px-5">Logout</a>
+                <?php else: ?>
+                    <a href="../login.php" class="btn btn-primary py-4 px-5">Join Login</a>
+                <?php endif; ?>
+            </div>
     </nav>
     <!-- Navbar End -->
 

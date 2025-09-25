@@ -123,15 +123,8 @@
                         method: "POST",
                         body: formData
                     });
-                    
-                    console.log("Response 11 ");
-                    console.log(response);
-
                     let responseText = await response.text();
-                    console.log("RAW:", responseText);
-
                     let data = JSON.parse(responseText);
-                    console.log("Response Message:",data);
 
                     if (!data.success) {
                         alert("Invalid email or password.");

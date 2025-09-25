@@ -28,6 +28,10 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
             color: #333;
         }
 
+        h2{
+            text-align: center;
+        }
+
         #serviceForm {
             background: #fff;
             padding: 20px;

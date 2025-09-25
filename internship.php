@@ -199,11 +199,9 @@ if ($conn->connect_error) {
       </div>
     </main>
 
-    <!-- Footer Start -->
-    <?php // footer.php should output a root <footer> with class="site-footer ..." ?>
-    
+    <!-- Footer Start -->    
+    <?php include 'footer.php'; ?>
     <!-- Footer End -->
-     <?php include 'footer.php'; ?>
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

@@ -1,9 +1,10 @@
 <?php
 include '../config/database.php';
-session_start();
 
-if (!isset($_SESSION['user_id'])) {
-  $_SESSION['user_id'] = 1; // Temporary for testing; replace with real login session later
+session_start();
+if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'user') {
+  header("Location: ../login.php");
+  exit();
 }
 
 $conn = (new Database())->connect();
@@ -39,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -48,50 +50,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <link href="../css/projects.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 </head>
+
 <body>
 
-<?php include 'user_navbar.php'; ?>
-<main class="mt-100">
+  <?php include 'user_navbar.php'; ?>
 
-
-
+  <main class="m-5">
     <div class="container project-selection">
-  <div class="text-center">
-    <h2>Project Selection</h2>
-  </div>
+      <div class="text-center">
+        <h2>Project Selection</h2>
+      </div>
 
-  <form method="POST" id="projectForm">
-    <select name="degree" id="degree" required onchange="updateBranches()">
-      <option value="">Select Degree</option>
-      <option value="B.Tech">B.Tech</option>
-      <option value="M.Tech">M.Tech</option>
-      <option value="MCA">MCA</option>
-      <option value="MBA">MBA</option>
-    </select>
+      <form method="POST" id="projectForm">
+        <select name="degree" id="degree" required onchange="updateBranches()">
+          <option value="">Select Degree</option>
+          <option value="B.Tech">B.Tech</option>
+          <option value="M.Tech">M.Tech</option>
+          <option value="MCA">MCA</option>
+          <option value="MBA">MBA</option>
+        </select>
 
-    <select name="branch" id="branch" required>
-      <option value="">Select Branch</option>
-    </select>
+        <select name="branch" id="branch" required>
+          <option value="">Select Branch</option>
+        </select>
 
-    <select name="project_type" id="project_type" required>
-      <option value="">Select Project Type</option>
-      <option value="mini">Mini Project</option>
-      <option value="major">Major Project</option>
-    </select>
+        <!-- Project Type for all degrees -->
+        <div id="projectTypeDiv">
+          <select name="project_type" id="project_type" required>
+            <option value="">Select Project Type</option>
+            <option value="mini">Mini Project</option>
+            <option value="major">Major Project</option>
+          </select>
+        </div>
 
-    <select name="domain" id="domain" required>
-      <option value="">Select Domain</option>
-    </select>
+        <select name="domain" id="domain" required>
+          <option value="">Select Domain</option>
+        </select>
 
-    <button type="submit">Submit</button>
-  </form>
-    <?php
-  if (isset($_SESSION['project_results'])) {
-    $results = $_SESSION['project_results'];
+        <button type="submit">Submit</button>
+      </form>
+      <?php
+      if (isset($_SESSION['project_results'])) {
+        $results = $_SESSION['project_results'];
 
-    echo "<div class='mt-4'>";
-    if (count($results) > 0) {
-      echo "<table class='table table-bordered table-hover'>
+        echo "<div class='mt-4'>";
+        if (count($results) > 0) {
+          echo "<table class='table table-bordered table-hover'>
               <thead class='table-dark'>
                 <tr>
                   <th>Title</th>
@@ -106,17 +110,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               </thead>
               <tbody>";
 
-      foreach ($results as $row) {
-        $projectId = htmlspecialchars($row['id']);
-        $title = htmlspecialchars($row['title']);
-        $description = htmlspecialchars($row['description']);
-        $technologies = htmlspecialchars($row['technologies']);
-        $price = htmlspecialchars($row['price']);
-        $youtubeUrl = htmlspecialchars($row['youtube_url']);
-        $abstractPath = htmlspecialchars($row['file_path_abstract']);
-        $basePaperPath = htmlspecialchars($row['file_path_basepaper']);
+          foreach ($results as $row) {
+            $projectId = htmlspecialchars($row['id']);
+            $title = htmlspecialchars($row['title']);
+            $description = htmlspecialchars($row['description']);
+            $technologies = htmlspecialchars($row['technologies']);
+            $price = htmlspecialchars($row['price']);
+            $youtubeUrl = htmlspecialchars($row['youtube_url']);
+            $abstractPath = htmlspecialchars($row['file_path_abstract']);
+            $basePaperPath = htmlspecialchars($row['file_path_basepaper']);
 
-        echo "<tr>
+            echo "<tr>
                 <td>{$title}</td>
                 <td>{$description}</td>
                 <td>{$technologies}</td>
@@ -126,96 +130,95 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <td><a href='{$basePaperPath}' class='btn btn-sm btn-primary' download>Download</a></td>
                 <td><a href='projecthistory.php?project_id={$projectId}' class='btn btn-sm btn-success bi bi-hand-thumbs-up' title='Interested'></a></td>
               </tr>";
+          }
+
+          echo "</tbody></table>";
+        } else {
+          echo "<p class='text-center mt-3'>No projects found for your selection.</p>";
+        }
+        echo "</div>";
+
+        unset($_SESSION['project_results']);
       }
+      ?>
+    </div>
 
-      echo "</tbody></table>";
-    } else {
-      echo "<p class='text-center mt-3'>No projects found for your selection.</p>";
+  </main>
+
+  <?php include '../footer.php'; ?>
+
+  <script>
+    function updateBranches() {
+      let degree = document.getElementById("degree").value;
+      let branch = document.getElementById("branch");
+      let domain = document.getElementById("domain");
+
+      branch.innerHTML = "<option value=''>Select Branch</option>";
+      domain.innerHTML = "<option value=''>Select Domain</option>";
+
+      if (degree === "B.Tech") {
+        ["CSE", "ECE", "EEE", "Civil", "Mech"].forEach(b => branch.innerHTML += `<option value="${b}">${b}</option>`);
+      } else if (degree === "M.Tech") {
+        ["CSE", "ECE", "Power Systems", "Structural Engineering"].forEach(b => branch.innerHTML += `<option value="${b}">${b}</option>`);
+      } else if (degree === "MCA") {
+        ["Software Engineering", "Networking", "Hardware Technologies", "Management Information Systems"].forEach(b => branch.innerHTML += `<option value="${b}">${b}</option>`);
+      } else if (degree === "MBA") {
+        ["Marketing", "Finance", "Hospitality & Tourism", "Banking & Insurance"].forEach(b => branch.innerHTML += `<option value="${b}">${b}</option>`);
+      }
     }
-    echo "</div>";
 
-    unset($_SESSION['project_results']);
-  }
-  ?>
-</div>
+    document.getElementById("branch").addEventListener("change", function() {
+      let branch = this.value;
+      let degree = document.getElementById("degree").value;
+      let domain = document.getElementById("domain");
 
-</main>
+      domain.innerHTML = "<option value=''>Select Domain</option>";
 
-<!-- <div class="container project-selection">
-  <div class="text-center">
-    <h2>Project Selection</h2>
-  </div>
-
-  <form method="POST" id="projectForm">
-    <select name="degree" id="degree" required onchange="updateBranches()">
-      <option value="">Select Degree</option>
-      <option value="B.Tech">B.Tech</option>
-      <option value="M.Tech">M.Tech</option>
-      <option value="MCA">MCA</option>
-      <option value="MBA">MBA</option>
-    </select>
-
-    <select name="branch" id="branch" required>
-      <option value="">Select Branch</option>
-    </select>
-
-    <select name="project_type" id="project_type" required>
-      <option value="">Select Project Type</option>
-      <option value="mini">Mini Project</option>
-      <option value="major">Major Project</option>
-    </select>
-
-    <select name="domain" id="domain" required>
-      <option value="">Select Domain</option>
-    </select>
-
-    <button type="submit">Submit</button>
-  </form> -->
-
-
-<?php include '../admin/footer.php'; ?>
-
-<script>
-const branchesByDegree = {
-  "B.Tech": ["CSE", "ECE", "ME", "CE", "EE", "IT"],
-  "M.Tech": ["CSE", "ECE", "ME", "CE", "EE"],
-  "MCA": ["Computer Applications"],
-  "MBA": ["Marketing", "Finance", "HR", "Operations"]
-};
-
-const domainsByDegree = {
-  "B.Tech": ["AI", "Data Science", "Web Development", "IoT", "Embedded Systems"],
-  "M.Tech": ["AI", "Robotics", "Machine Learning", "Cybersecurity"],
-  "MCA": ["Web Development", "Mobile Apps", "Database Management"],
-  "MBA": ["Business Analytics", "Finance", "Marketing", "Operations Management"]
-};
-
-function updateBranches() {
-  const degree = document.getElementById("degree").value;
-  const branchSelect = document.getElementById("branch");
-  const domainSelect = document.getElementById("domain");
-
-  branchSelect.innerHTML = "<option value=''>Select Branch</option>";
-  domainSelect.innerHTML = "<option value=''>Select Domain</option>";
-
-  if (branchesByDegree[degree]) {
-    branchesByDegree[degree].forEach(branch => {
-      const opt = document.createElement("option");
-      opt.value = branch;
-      opt.textContent = branch;
-      branchSelect.appendChild(opt);
+      if (degree === "B.Tech") {
+        if (branch === "CSE") {
+          ["Web Development", "AI/ML", "Cloud Computing", "App Development", "Cyber Security"].forEach(d => domain.innerHTML += `<option value="${d}">${d}</option>`);
+        } else if (branch === "ECE") {
+          ["VLSI", "Embedded Systems", "IoT", "Robotics"].forEach(d => domain.innerHTML += `<option value="${d}">${d}</option>`);
+        } else if (branch === "EEE") {
+          ["Power Electronics", "Renewable Energy", "Smart Grids"].forEach(d => domain.innerHTML += `<option value="${d}">${d}</option>`);
+        } else if (branch === "Civil") {
+          ["Structural Analysis", "Construction Management", "Geotechnical"].forEach(d => domain.innerHTML += `<option value="${d}">${d}</option>`);
+        } else if (branch === "Mech") {
+          ["Thermal Engineering", "Automobile", "Manufacturing", "Mechatronics"].forEach(d => domain.innerHTML += `<option value="${d}">${d}</option>`);
+        }
+      } else if (degree === "M.Tech") {
+        if (branch === "CSE") {
+          ["Data Mining", "Blockchain", "Network Security"].forEach(d => domain.innerHTML += `<option value="${d}">${d}</option>`);
+        } else if (branch === "ECE") {
+          ["Wireless Communication", "Signal Processing", "VLSI Design"].forEach(d => domain.innerHTML += `<option value="${d}">${d}</option>`);
+        } else if (branch === "Power Systems") {
+          ["FACTS", "Smart Energy System", "Load Flow Studies"].forEach(d => domain.innerHTML += `<option value="${d}">${d}</option>`);
+        } else if (branch === "Structural Engineering") {
+          ["Finite Element", "Concrete Technology", "Seismic Design"].forEach(d => domain.innerHTML += `<option value="${d}">${d}</option>`);
+        }
+      } else if (degree === "MCA") {
+        if (branch === "Software Engineering") {
+          ["Database Management Systems", "Software Design & Architecture", "Software Project Management"].forEach(d => domain.innerHTML += `<option value="${d}">${d}</option>`);
+        } else if (branch === "Networking") {
+          ["Computer Networking", "Network Security", "Cloud Networking", "Data Communication"].forEach(d => domain.innerHTML += `<option value="${d}">${d}</option>`);
+        } else if (branch === "Hardware Technologies") {
+          ["Embedded Systems", "VLSI Design", "IoT Hardware & Sensors"].forEach(d => domain.innerHTML += `<option value="${d}">${d}</option>`);
+        } else if (branch === "Management Information Systems") {
+          ["Enterprise Systems", "E-Business & E-Commerce Systems", "Information Security"].forEach(d => domain.innerHTML += `<option value="${d}">${d}</option>`);
+        }
+      } else if (degree === "MBA") {
+        if (branch === "Marketing") {
+          ["Brand Management", "Digital Marketing", "International Marketing", "Sales & Distribution Management"].forEach(d => domain.innerHTML += `<option value="${d}">${d}</option>`);
+        } else if (branch === "Finance") {
+          ["Corporate Finance", "Investment Banking", "Risk Management"].forEach(d => domain.innerHTML += `<option value="${d}">${d}</option>`);
+        } else if (branch === "Hospitality & Tourism") {
+          ["Hotel Management & Operations", "Housekeeping & Facility Management", "Travel & Transport Management", "Sustainable Eco-Tourism"].forEach(d => domain.innerHTML += `<option value="${d}">${d}</option>`);
+        } else if (branch === "Banking & Insurance") {
+          ["Corporate Banking", "Investment Banking", "Retail Banking", "Insurance Management"].forEach(d => domain.innerHTML += `<option value="${d}">${d}</option>`);
+        }
+      }
     });
-  }
-
-  if (domainsByDegree[degree]) {
-    domainsByDegree[degree].forEach(domain => {
-      const opt = document.createElement("option");
-      opt.value = domain;
-      opt.textContent = domain;
-      domainSelect.appendChild(opt);
-    });
-  }
-}
-</script>
+  </script>
 </body>
+
 </html>

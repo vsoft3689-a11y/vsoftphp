@@ -1,5 +1,4 @@
 <?php include './config/database.php';
-
 session_start();
 
 $conn = (new Database())->connect();

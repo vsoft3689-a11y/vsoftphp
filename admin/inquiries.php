@@ -22,7 +22,6 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
 
     #inquiryHeading {
       color: #333;
-      margin: 20px;
     }
 
     table {

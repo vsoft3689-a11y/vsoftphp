@@ -54,8 +54,6 @@ function getEmbedMapUrl($url)
     return $url; // fallback
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 

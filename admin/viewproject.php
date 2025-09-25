@@ -43,7 +43,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
         }
 
         .load-projects {
-            margin: 10px 50px;
+            margin: 10px 10px;
         }
 
         #projectHeading {

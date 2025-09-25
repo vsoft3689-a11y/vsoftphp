@@ -23,10 +23,13 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
             align-items: center;
         }
 
-
         #createHeading {
             margin: 20px 0;
             color: #444;
+        }
+
+        h2 {
+            text-align: center;
         }
 
         form {
@@ -154,7 +157,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
 
             <button id="btn" type="submit">Add Member</button>
         </form>
-
+        <br>
         <!-- UPDATE FORM -->
         <h2 id="updateHeading" style="display:none;">Update Team Member</h2>
         <form id="updateForm" method="POST" enctype="multipart/form-data" style="display:none;">

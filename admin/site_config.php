@@ -29,6 +29,10 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
             margin: 20px;
         }
 
+        h2 {
+            text-align: center;
+        }
+
         #configForm {
             background: #fff;
             padding: 20px;
@@ -85,12 +89,9 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
             margin: 10px 10px;
         }
 
-        hr {
-            margin: 30px 0;
-        }
-
         table {
             width: 100%;
+            max-width: 1500px;
             border-collapse: collapse;
             background: #fff;
             margin-top: 20px;
@@ -101,17 +102,21 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
 
         th,
         td {
-            width: 10%;
             padding: 12px;
             border-bottom: 1px solid #eee;
             text-align: left;
             vertical-align: top;
+            word-break: break-word;
         }
 
         th {
             background: #06BBCC;
             color: #fff;
             text-align: center;
+        }
+
+        td {
+            width: 20px;
         }
 
         tr:hover {

@@ -1,10 +1,8 @@
 <?php
-// ----------------- DB CONNECTION -----------------
 include './config/database.php';
 
 $conn = (new Database())->connect();
 
-// Check connection
 if ($conn->connect_error) {
     die("Database connection failed: " . $conn->connect_error);
 }

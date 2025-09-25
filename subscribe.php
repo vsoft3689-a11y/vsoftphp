@@ -1,6 +1,5 @@
 <?php
-// subscribe.php (in project root)
-include __DIR__ . '/config/database.php';   // correct path from root to config
+include __DIR__ . '/config/database.php';
 
 $db = new Database();
 $conn = $db->connect();
@@ -17,10 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Use prepared statement
     $stmt = $conn->prepare("INSERT INTO newsletter_subscribers (email) VALUES (?)");
     if (!$stmt) {
-        // prepare failed
         echo "<script>alert('Database error.'); window.history.back();</script>";
         exit;
     }
@@ -31,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<script>alert('Thank you for subscribing!'); window.location.href='index.php';</script>";
         exit;
     } else {
-        // duplicate entry error (MySQL error code 1062) or other error
         if ($stmt->errno == 1062) {
             echo "<script>alert('This email is already subscribed.'); window.location.href='index.php';</script>";
         } else {
@@ -39,9 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         exit;
     }
-
     $stmt->close();
 }
-
 $conn->close();
-?>

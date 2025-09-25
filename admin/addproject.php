@@ -28,6 +28,10 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
       margin-bottom: 10px;
     }
 
+    h2{
+      text-align: center;
+    }
+
     #createForm {
       max-width: 800px;
       display: flex;

@@ -469,24 +469,24 @@ while ($row = $result->fetch_assoc()) {
                 <?php endif; ?>
 
                 <details class="bulk-offer mt-2">
-                 <summary>View Offers 🎉</summary>
-                    <div class="offers">
+                  <summary>View Offers 🎉</summary>
+                  <div class="offers">
                     <h6>🎉 Bulk Offers</h6>
                     <ul style="list-style:none; padding:0; margin:0;">
-                    <?php
-                    // Split description into lines
-                    $lines = explode("\n", $package['description']);
-                    foreach ($lines as $line) {
-                    if (stripos($line, 'Buy') !== false) { // show only lines with "Buy"
-                    echo '<li style="display: block; font-weight:bold; margin-right:15px;">✅ '
-                    . htmlspecialchars($line) . '</li>';
+                      <?php
+                      // Split description into lines
+                      $lines = explode("\n", $package['description']);
+                      foreach ($lines as $line) {
+                        if (stripos($line, 'Buy') !== false) { // show only lines with "Buy"
+                          echo '<li style="display: block; font-weight:bold; margin-right:15px;">✅ '
+                            . htmlspecialchars($line) . '</li>';
 
-                    //   echo "<li >✅ " . htmlspecialchars($line) . "</li>";
-                    }
-                    }
-                    ?>
+                          //   echo "<li >✅ " . htmlspecialchars($line) . "</li>";
+                        }
+                      }
+                      ?>
                     </ul>
-                    </div>
+                  </div>
                 </details>
               </div>
             </div>

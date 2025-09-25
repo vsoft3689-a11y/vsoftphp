@@ -1,8 +1,7 @@
 <?php
-include __DIR__ . '/auth.php';
 include '../config/database.php';
-// session_start();
 
+session_start();
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'user') {
   header("Location: ../login.php");
   exit();
@@ -87,7 +86,7 @@ $user_id = (int)$_SESSION['user']['id'];
   </div>
 
   <!-- Footer Start -->
-<?php include '../admin/footer.php'; ?>
+  <?php include '../footer.php'; ?>
   <!-- Footer End -->
 
 

@@ -149,15 +149,19 @@ $file_path_basepaper = $_GET['file_path_basepaper'];
                     <label>Youtube URL</label>
                     <input type="url" name="youtube_url" id="update_youtube_url" value="<?php echo htmlspecialchars($youtube_url); ?>" placeholder="YouTube URL" />
                     <label>Abstract Paper</label>
-                    <?php if (!empty($file_path_abstract)): ?>
+                    <?php
+                    $abstractPath = "./" . $file_path_abstract;
+                    if (!empty($file_path_abstract) && file_exists($abstractPath)): ?>
                         <p>Current File: <a href="<?php echo htmlspecialchars($file_path_abstract); ?>" target="_blank">Download Abstract</a></p>
                     <?php endif; ?>
-                    <input type="file" name="abstract" accept="application/pdf" value="<?php echo htmlspecialchars($file_path_abstract); ?>" />
+                    <input type="file" name="abstract" accept="application/pdf" />
                     <label>Basepaper</label>
-                    <?php if (!empty($file_path_basepaper)): ?>
+                    <?php
+                    $basepaperPath = "./" . $file_path_basepaper;
+                    if (!empty($file_path_basepaper) && file_exists($basepaperPath)): ?>
                         <p>Current File: <a href="<?php echo htmlspecialchars($file_path_basepaper); ?>" target="_blank">Download Basepaper</a></p>
                     <?php endif; ?>
-                    <input type="file" name="basepaper" accept="application/pdf" value="<?php echo htmlspecialchars($file_path_basepaper); ?>" />
+                    <input type="file" name="basepaper" accept="application/pdf" />
                     <button type="submit">Update</button>
                     <button type="button" onclick="window.location='./viewproject.php'">Cancel</button>
                 </div>

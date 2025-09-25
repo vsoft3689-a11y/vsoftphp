@@ -67,14 +67,14 @@
                 <a href="./customrequirements.php" class="nav-item nav-link">Custom Requirements</a>
                 <a href="./inquiries.php" class="nav-item nav-link">Inquiries</a>
             </div>
-            <!-- <a href="./login.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a> -->
-            <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin'): ?>
-                <!-- Show only when logged in -->
-                <a href="../logout.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Logout</a>
-            <?php else: ?>
-                <!-- Show only when logged out -->
-                <a href="../login.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Admin Login</a>
-            <?php endif; ?>
+
+            <div class="d-flex align-items-center ms-3 text-center">
+                <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin'): ?>
+                    <a href="../logout.php" class="btn btn-primary py-4 px-5">Logout</a>
+                <?php else: ?>
+                    <a href="../login.php" class="btn btn-primary py-4 px-5">Admin Login</a>
+                <?php endif; ?>
+            </div>
         </div>
     </nav>
     <!-- Navbar End -->

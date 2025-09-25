@@ -22,7 +22,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
 
     #heading {
       color: #333;
-      margin: 20px;
+      margin: 10px;
     }
 
     table {
