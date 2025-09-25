@@ -1,0 +1,26 @@
+       .zoom-img {
+  display: block;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.zoom-img img {
+  transition: transform 0.5s ease;
+}
+
+.zoom-img:hover img {
+  transform: scale(1.1); /* zoom in only this image */
+}
+.zoom-link {
+    color: black;
+    /* text-decoration: underline; */
+    display: inline-block; /* required for transform */
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .zoom-link:hover {
+    transform: scale(1.1); /* zoom in by 10% */
+    color: #000; /* keep it black */
+  }
+ 
+

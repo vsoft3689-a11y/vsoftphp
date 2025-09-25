@@ -1,0 +1,99 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
+}
+
+.register-container {
+    max-width: 500px;
+    margin: 80px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 2px solid #06bbcc;
+    box-shadow: 0 0 15px rgba(6, 187, 204, 0.2);
+}
+
+.register-container h2 {
+    font-size: 24px;
+    color: #06bbcc;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.form-control,
+.form-select {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 14px;
+    width: 100%;
+    height: 50px;
+    border: 2px solid #ccc;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #06bbcc;
+    box-shadow: 0 0 8px rgba(6, 187, 204, 0.5);
+    outline: none;
+}
+
+.form-control.is-invalid,
+.form-select.is-invalid {
+    border-color: #dc3545;
+}
+
+.invalid-feedback {
+    display: none;
+    font-size: 13px;
+    color: #dc3545;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+.is-invalid+.invalid-feedback {
+    display: block;
+}
+
+.register-container button {
+    background-color: #06bbcc;
+    border-color: #06bbcc;
+    padding: 15px;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    height: 50px;
+    border: 2px solid #06bbcc;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.register-container button:hover {
+    background-color: #05a5b1;
+    border-color: #05a5b1;
+}
+
+.footer-links {
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.footer-links a {
+    color: #06bbcc;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+label {
+    font-weight: 600;
+    padding-left: 10px;
+}

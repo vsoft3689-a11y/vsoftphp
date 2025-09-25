@@ -1,0 +1,82 @@
+/* Updated Soft Skills & Section Styling */
+body {
+  font-family: 'Heebo', sans-serif;
+  background-color: #fff;
+}
+.terms-container {
+  padding: 2.5rem 2rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.12);
+  font-size: 16px;
+  line-height: 1.68;
+  color: #444;
+  max-width: 900px;
+  border: 2px solid #06bbcc; /* new: add a colored border */
+}
+
+/* Headings Style - to use #06bbcc */
+.terms-container h4,
+.terms-container h6 {
+  color: #06bbcc;            /* main heading color */
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #06bbcc; /* subtle underline for headings */
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+/* H4 and H6 distinction for spacing */
+.terms-container h4 {
+  font-size: 1.65rem;
+  margin-bottom: 1rem;
+  margin-top: 0.8rem;
+}
+.terms-container h6 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.7rem;
+  border-bottom: 1px solid #06bbcc;
+  padding-bottom: 2px;
+}
+
+/* Lists and Paragraphs */
+.terms-container p,
+.terms-container ul {
+  margin-bottom: 1rem;
+  font-size: 15px;
+}
+.terms-container ul li {
+  margin-bottom: 0.6rem;
+  padding-left: 0.5rem;
+  border-left: 3px solid #06bbcc; /* accent bar for list items */
+  background: rgba(6,187,204, 0.05);
+  border-radius: 6px;
+  margin-bottom: 0.7rem;
+}
+
+/* Additional Styling for .back-to-top button */
+.back-to-top {
+  background-color: #06bbcc !important;
+  border: none;
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(6, 187, 204, 0.12);
+}
+
+/* Responsive Container */
+@media (max-width: 600px) {
+  .terms-container {
+    padding: 1.2rem 0.7rem;
+    font-size: 15px;
+  }
+  .terms-container h4 {
+    font-size: 1.25rem;
+  }
+  .terms-container h6 {
+    font-size: 1rem;
+  }
+}

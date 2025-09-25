@@ -1,0 +1,24 @@
+   
+.offer-list {
+  list-style: none;
+  padding:0 ;
+  margin: 0;
+  display: inline-block;
+}
+
+ .offer-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+.offer-link {
+  text-decoration: none;   /* remove underline */
+  color: black;            /* make text black */
+  display: block;          /* makes the whole line clickable */
+}
+
+.offer-link:hover {
+  color: #e63946;          /* optional hover color (red) */
+}
