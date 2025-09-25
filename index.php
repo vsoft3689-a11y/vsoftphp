@@ -241,7 +241,7 @@ while ($row = $result->fetch_assoc()) {
             <div class="p-4 h-100 d-flex flex-column">
               <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
               <h5 class="mb-3">B.TECH Projects</h5>
-              <p>B.Tech projects showcase practical applications of engineering concepts in fields like software, civil, mechanical, and electronics engineering.</p>
+              <p style="text-align: justify;">B.Tech projects showcase practical applications of engineering concepts in fields like software, civil, mechanical, and electronics engineering.</p>
               <a href="./projects.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Know More</a>
 
 
@@ -255,7 +255,7 @@ while ($row = $result->fetch_assoc()) {
             <div class="p-4 h-100 d-flex flex-column">
               <i class="fa-solid fa-microchip fa-3x text-primary mb-4"></i>
               <h5 class="mb-3">M.TECH Projects</h5>
-              <p>M.Tech projects provide students with in-depth research or industry exposure in specialized engineering fields such as computer science, electronics and etc.</p>
+              <p style="text-align: justify;">M.Tech projects provide students with in-depth research or industry exposure in specialized engineering fields such as computer science, electronics and etc.</p>
               <!-- <a href="./internship.php" class="btn btn-primary mt-auto">Click Here</a> -->
               <a href="./projects.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Know More</a>
             </div>
@@ -267,7 +267,7 @@ while ($row = $result->fetch_assoc()) {
             <div class="p-4 h-100 d-flex flex-column">
               <i class="fa-solid fa-briefcase fa-3x text-info mb-4"></i>
               <h5 class="mb-3">MBA Projects</h5>
-              <p>MBA projects focus on providing students with real-world business experience in areas such as management, finance, marketing and operations.</p>
+              <p style="text-align: justify;">MBA projects focus on providing students with real-world business experience in areas such as management, finance, marketing and operations.</p>
               <!-- <a href="./internship.php" class="btn btn-primary mt-auto">Click Here</a> -->
               <a href="./projects.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Know More</a>
             </div>
@@ -282,7 +282,7 @@ while ($row = $result->fetch_assoc()) {
             <div class="p-4 h-100 d-flex flex-column">
               <i class="fa-solid fa-laptop-code fa-3x text-info mb-4"></i>
               <h5 class="mb-3">MCA Projects</h5>
-              <p>MCA projects provide practical exposure to software development, IT services, and application design, helping students build technical expertise and industry-ready.</p>
+              <p style="text-align: justify;">MCA projects provide practical exposure to software development, IT services, and application design, helping students build technical expertise and industry-ready.</p>
               <!-- <a href="./internship.php" class="btn btn-primary mt-auto">Click Here</a> -->
               <a href="./projects.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Know More</a>
             </div>
@@ -294,7 +294,7 @@ while ($row = $result->fetch_assoc()) {
             <div class="p-4 h-100 d-flex flex-column">
               <i class="fa-solid fa-chalkboard-teacher fa-3x text-info mb-4"></i>
               <h5 class="mb-3">Internship</h5>
-              <p>Internships provide students with hands-on industry exposure, allowing them to apply academic knowledge in practical situations and gain professional experience.</p>
+              <p style="text-align: justify;">Internships provide students with hands-on industry exposure, allowing them to apply academic knowledge in practical situations and gain professional experience.</p>
               <!-- <a href="./internship.php" class="btn btn-primary mt-auto">Click Here</a> -->
               <a href="./internship.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Know More</a>
             </div>
@@ -307,7 +307,7 @@ while ($row = $result->fetch_assoc()) {
               <i class="fa-solid fa-users fa-3x text-info mb-4"></i>
               <!-- <i class="fa-solid fa-users fa-3x text-warning mb-4"></i> -->
               <h5 class="mb-3">Corporate</h5>
-              <p>Corporate training equips employees and graduates with the latest industry skills, bridging the gap between education and real-world professional demands.</p>
+              <p style="text-align: justify;">Corporate training equips employees and graduates with the latest industry skills, bridging the gap between education and real-world professional demands.</p>
               <!-- <a href="./internship.php" class="btn btn-primary mt-auto">Click Here</a> -->
               <a href="./internship.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Know More</a>
             </div>
@@ -438,12 +438,12 @@ while ($row = $result->fetch_assoc()) {
           <div class="col-lg-4 col-md-6 wow fadeInUp">
             <div class="course-item bg-light">
               <div class="position-relative overflow-hidden">
-                <?php if ($package['service_type'] === 'project'): ?>
+                <?php if ($package['service_type'] === 'mini'): ?>
                   <img class="img-fluid" src="img/mini1.jpg" alt="">
-                <?php elseif ($package['service_type'] === 'internship'): ?>
-                  <img class="img-fluid" src="img/internship.jpg" alt="">
-                <?php else: ?>
+                <?php elseif ($package['service_type'] === 'major'): ?>
                   <img class="img-fluid" src="img/major1.jpg" alt="">
+                <?php else: ?>
+                  <img class="img-fluid" src="img/internship.jpg" alt="">
                 <?php endif; ?>
               </div>
 
@@ -469,19 +469,24 @@ while ($row = $result->fetch_assoc()) {
                 <?php endif; ?>
 
                 <details class="bulk-offer mt-2">
-                  <summary>View Offers 🎉</summary>
-                  <div class="offers">
+                 <summary>View Offers 🎉</summary>
+                    <div class="offers">
                     <h6>🎉 Bulk Offers</h6>
-                    <ul style="list-style:none; padding:0; margin:0;" class="offer-list">
-                      <?php foreach ($package['bulk_offers'] as $offer): ?>
-                        <li>
-                          <a href="<?php echo $package['button_link']; ?>" class="zoom-link" style="color:black;">
-                            ✅ Buy <b><?php echo $offer['quantity']; ?></b> → ₹<?php echo number_format($offer['price'], 0); ?> per project
-                          </a>
-                        </li>
-                      <?php endforeach; ?>
+                    <ul style="list-style:none; padding:0; margin:0;">
+                    <?php
+                    // Split description into lines
+                    $lines = explode("\n", $package['description']);
+                    foreach ($lines as $line) {
+                    if (stripos($line, 'Buy') !== false) { // show only lines with "Buy"
+                    echo '<li style="display: block; font-weight:bold; margin-right:15px;">✅ '
+                    . htmlspecialchars($line) . '</li>';
+
+                    //   echo "<li >✅ " . htmlspecialchars($line) . "</li>";
+                    }
+                    }
+                    ?>
                     </ul>
-                  </div>
+                    </div>
                 </details>
               </div>
             </div>
