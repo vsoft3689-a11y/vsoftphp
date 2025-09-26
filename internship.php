@@ -87,7 +87,7 @@ if ($conn->connect_error) {
                           <div class="p-4">
                               <i class="fa fa-3x fa-laptop text-primary mb-4"></i>
                               <h5 class="mb-3">Internship Programing</h5>
-                              <p>Web-developement, Python,<br>AI & ML, Mobile-developement, Java & Sringboot, etc</p>
+                              <p style="text-align: center;">Web-developement, Python,<br>AI & ML, Mobile-developement,<br>Java & Springboot, etc</p>
                               <a class="btn btn-primary py-3 px-5 mt-2" href="#internship">View</a>
                           </div>
                       </div>
@@ -97,7 +97,7 @@ if ($conn->connect_error) {
                           <div class="p-4">
                               <i class="fa fa-3x bi-briefcase text-primary mb-4"></i>
                               <h5 class="mb-3">Corporate Training</h5>
-                              <p>Soft Skills & Communication, Excel & Data Analytics,<br>Leadership & Team Building.</p>
+                              <p style="text-align: center;">Soft Skills & Communication,<br>Excel & Data Analytics,<br>Leadership & Team Building.</p>
                               <a class="btn btn-primary py-3 px-5 mt-2" href="#corporate">View</a>
                           </div>
                       </div>

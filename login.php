@@ -1,5 +1,4 @@
 <?php
-
     // At the top of your PHP file
     error_reporting(E_ALL);
     ini_set('display_errors', 0);  // Do not show errors in response

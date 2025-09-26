@@ -67,7 +67,7 @@ $result = $conn->query($sql);
                         <a class="text-white" href="index.php">Home</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a class="text-white" href="about.php">about</a>
+                        <a class="text-white" href="about.php">About</a>
                     </li>
                     <li class="breadcrumb-item">
                         <a class="text-white" href="services.php">Services</a>

@@ -45,584 +45,429 @@ while ($row = $result->fetch_assoc()) {
 <html lang="en">
 
 <head>
-<meta charset="utf-8">
-<title>VsoftSolutions</title>
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="" name="keywords">
-<meta content="" name="description">
+  <meta charset="utf-8">
+  <title>VsoftSolutions</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <style>
+    .testimonial-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
+    .testimonial-text {
+      max-width: 280px;
+      margin: 0 auto;
+      font-size: 14px;
+      line-height: 1.5;
+      background: #f8f9fa;
+      border: 1px solid #eee;
+      padding: 15px;
+      border-radius: 8px;
+    }
 
-<!-- Favicon -->
-<link href="../img/favicon.ico" rel="icon">
+    .owl-carousel .owl-nav button.owl-prev,
+    .owl-carousel .owl-nav button.owl-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+    }
 
-<!-- Google Web Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-  href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap"
-  rel="stylesheet">
+    .owl-carousel .owl-nav button.owl-prev {
+      left: 15px;
+    }
 
-<!-- Icon Font Stylesheet -->
-<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet"> -->
+    .owl-carousel .owl-nav button.owl-next {
+      right: 15px;
+    }
 
+    .owl-carousel .owl-dots {
+      text-align: center;
+      margin-top: 15px;
+    }
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    .owl-carousel .owl-dots .owl-dot span {
+      background: #007bff;
+    }
 
+    .zoom {
+      transition: transform 0.4s ease;
+    }
 
-
-
-<!-- Libraries Stylesheet -->
-<link href="./lib/animate/animate.min.css" rel="stylesheet">
-<link href="./lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-<!-- Customized Bootstrap Stylesheet -->
-<link href="./css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Template Stylesheet -->
-<link href="./css/style.css" rel="stylesheet">
-
-
-<link href="css/zoom.css" rel="stylesheet">
-<link href="css/offer.css" rel="stylesheet">
-
-
-<style>
-.testimonial-item {
-display: flex;
-flex-direction: column;
-align-items: center;
-}
-
-.testimonial-text {
-max-width: 280px;
-/* smaller review box */
-margin: 0 auto;
-font-size: 14px;
-line-height: 1.5;
-background: #f8f9fa;
-border: 1px solid #eee;
-padding: 15px;
-border-radius: 8px;
-}
-
-.owl-carousel .owl-nav button.owl-prev,
-.owl-carousel .owl-nav button.owl-next {
-position: absolute;
-top: 50%;
-transform: translateY(-50%);
-background: rgba(0, 0, 0, 0.5);
-color: #fff;
-border: none;
-padding: 10px 15px;
-border-radius: 50%;
-}
-
-.owl-carousel .owl-nav button.owl-prev {
-left: 15px;
-}
-
-.owl-carousel .owl-nav button.owl-next {
-right: 15px;
-}
-
-.owl-carousel .owl-dots {
-text-align: center;
-margin-top: 15px;
-}
-
-.owl-carousel .owl-dots .owl-dot span {
-background: #007bff;
-}
-
-
-.zoom {
-  transition: transform 0.4s ease; /* smooth animation */
-}
-
-.zoom:hover {
-  transform: scale(1.1); /* zoom in */
-}
-
-</style>
+    .zoom:hover {
+      transform: scale(1.1);
+    }
+  </style>
 
 </head>
 
-    <body>
-      
-      <!-- Navbar End -->
+<body>
+  <!-- Navbar Start -->
+  <?php include "./navbar.php" ?>
+  <!-- Navbar End -->
 
+  <!-- Carousel Start -->
+  <div class="container-fluid p-0 mb-5">
+    <div class="owl-carousel header-carousel position-relative">
 
-    <!-- Navbar Start -->
-        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-            <a href="index.php" class="navbar-logo">
-                <img src="./img/logo.webp" alt="VSoft Solutions Pvt Ltd Logo"
-                    style="height:48px; width:auto; display:block; object-fit:contain;" />
-            </a>
-            <button class="navbar-toggler me-4" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+      <?php if ($bannerResult && $bannerResult->num_rows > 0): ?>
+        <?php while ($row = $bannerResult->fetch_assoc()): ?>
+          <?php if (!empty($row['image_path'])): ?>
+            <div class="owl-carousel-item position-relative">
 
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="./index.php" class="nav-item nav-link">Home</a>
-                    <a href="./about.php" class="nav-item nav-link">About</a>
-                    <a href="./services.php" class="nav-item nav-link">Services</a>
-                    <a href="./projects.php" class="nav-item nav-link">Projects</a>
-                    <a href="./internship.php" class="nav-item nav-link">Internship</a>
-                    <a href="./contact.php" class="nav-item nav-link">Contact</a>
-                </div>
-                <a href="./login.php" class="btn btn-primary py-4 px-lg-5">
-                    Join Now<i class="fa fa-arrow-right ms-3"></i>
-                </a>
-            </div>
-        </nav>
-        <!-- Navbar End -->
+              <!-- Banner Image -->
+              <img class="img-fluid w-100"
+                src="<?php echo htmlspecialchars($row['image_path']); ?>"
+                alt="Banner"
+                style="object-fit: cover; height: 600px;">
 
-        <!-- Carousel Start -->
-      <!-- ================= Banner Carousel ================= -->
-      <div class="container-fluid p-0 mb-5">
-        <div class="owl-carousel header-carousel position-relative">
+              <!-- Dark Overlay -->
+              <div class="position-absolute top-0 start-0 w-100 h-100"
+                style="background: rgba(24, 29, 56, .6);">
+                <div class="d-flex align-items-center h-100">
+                  <div class="container">
+                    <div class="row justify-content-start">
+                      <div class="col-sm-10 col-lg-8 text-start">
 
-          <?php if ($bannerResult && $bannerResult->num_rows > 0): ?>
-            <?php while ($row = $bannerResult->fetch_assoc()): ?>
-              <?php if (!empty($row['image_path'])): ?>
-                <div class="owl-carousel-item position-relative">
+                        <!-- Tagline -->
+                        <?php if (!empty($row['tagline'])): ?>
+                          <h5 class="text-primary text-uppercase mb-3 animated slideInDown"
+                            style="font-size: 22px; letter-spacing: 2px;">
+                            <?php echo htmlspecialchars($row['tagline']); ?>
+                          </h5>
+                        <?php endif; ?>
 
-                  <!-- Banner Image -->
-                  <img class="img-fluid w-100"
-                    src="<?php echo htmlspecialchars($row['image_path']); ?>"
-                    alt="Banner"
-                    style="object-fit: cover; height: 600px;">
+                        <!-- Sub Text -->
+                        <?php if (!empty($row['sub_text'])): ?>
+                          <h1 class="text-white fw-bold animated slideInDown"
+                            style="font-size: 40px; line-height: 1.2;">
+                            <?php echo htmlspecialchars($row['sub_text']); ?>
+                          </h1>
+                        <?php endif; ?>
 
-                  <!-- Dark Overlay -->
-                  <div class="position-absolute top-0 start-0 w-100 h-100"
-                    style="background: rgba(24, 29, 56, .6);">
-                    <div class="d-flex align-items-center h-100">
-                      <div class="container">
-                        <div class="row justify-content-start">
-                          <div class="col-sm-10 col-lg-8 text-start">
+                        <!-- CTA Button -->
+                        <?php if (!empty($row['cta_button_text']) && !empty($row['cta_button_link'])): ?>
+                          <a href="<?php echo htmlspecialchars($row['cta_button_link']); ?>"
+                            class="btn btn-primary py-md-3 px-md-5 me-3 mt-3 animated slideInLeft">
+                            <?php echo htmlspecialchars($row['cta_button_text']); ?>
+                          </a>
+                        <?php endif; ?>
 
-                            <!-- Tagline -->
-                            <?php if (!empty($row['tagline'])): ?>
-                              <h5 class="text-primary text-uppercase mb-3 animated slideInDown"
-                                style="font-size: 22px; letter-spacing: 2px;">
-                                <?php echo htmlspecialchars($row['tagline']); ?>
-                              </h5>
-                            <?php endif; ?>
-
-                            <!-- Sub Text -->
-                            <?php if (!empty($row['sub_text'])): ?>
-                              <h1 class="text-white fw-bold animated slideInDown"
-                                style="font-size: 40px; line-height: 1.2;">
-                                <?php echo htmlspecialchars($row['sub_text']); ?>
-                              </h1>
-                            <?php endif; ?>
-
-                            <!-- CTA Button -->
-                            <?php if (!empty($row['cta_button_text']) && !empty($row['cta_button_link'])): ?>
-                              <a href="<?php echo htmlspecialchars($row['cta_button_link']); ?>"
-                                class="btn btn-primary py-md-3 px-md-5 me-3 mt-3 animated slideInLeft">
-                                <?php echo htmlspecialchars($row['cta_button_text']); ?>
-                              </a>
-                            <?php endif; ?>
-
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </div>
-
                 </div>
-              <?php endif; ?>
-            <?php endwhile; ?>
-          <?php else: ?>
-            <p class="text-center text-white bg-dark py-5">No banners found!</p>
+              </div>
+            </div>
           <?php endif; ?>
+        <?php endwhile; ?>
+      <?php else: ?>
+        <p class="text-center text-white bg-dark py-5">No banners found!</p>
+      <?php endif; ?>
 
-        </div>
-      </div>
-
-
-
-      <!-- Carousel End -->
-
+    </div>
+  </div>
+  <!-- Carousel End -->
 
   <!-- Service start -->
-
-      <div class="container-xxl py-5">
-      <div class="container">
-
-        <!-- First Row -->
-        <div class="row g-4">
-          <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="service-item text-center pt-3 h-100">
-              <div class="p-4 h-100 d-flex flex-column">
-                <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
-                <h5 class="mb-3">B.TECH Projects</h5>
-                <p style="text-align: justify;">B.Tech projects showcase practical applications of engineering concepts in fields like software, civil, mechanical, and electronics engineering.</p>
-                <a href="./projects.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Know More</a>
-
-
-
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-            <div class="service-item text-center pt-3 h-100">
-              <div class="p-4 h-100 d-flex flex-column">
-                <i class="fa-solid fa-microchip fa-3x text-primary mb-4"></i>
-                <h5 class="mb-3">M.TECH Projects</h5>
-                <p style="text-align: justify;">M.Tech projects provide students with in-depth research or industry exposure in specialized engineering fields such as computer science, electronics and etc.</p>
-                <!-- <a href="./internship.php" class="btn btn-primary mt-auto">Click Here</a> -->
-                <a href="./projects.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Know More</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-            <div class="service-item text-center pt-3 h-100">
-              <div class="p-4 h-100 d-flex flex-column">
-                <i class="fa-solid fa-briefcase fa-3x text-info mb-4"></i>
-                <h5 class="mb-3">MBA Projects</h5>
-                <p style="text-align: justify;">MBA projects focus on providing students with real-world business experience in areas such as management, finance, marketing and operations.</p>
-                <!-- <a href="./internship.php" class="btn btn-primary mt-auto">Click Here</a> -->
-                <a href="./projects.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Know More</a>
-              </div>
+  <div class="container-xxl py-5">
+    <div class="container">
+      <!-- First Row -->
+      <div class="row g-4">
+        <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+          <div class="service-item text-center pt-3 h-100">
+            <div class="p-4 h-100 d-flex flex-column">
+              <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+              <h5 class="mb-3">B.TECH Projects</h5>
+              <p style="text-align: justify;">B.Tech projects showcase practical applications of engineering concepts in fields like software, civil, mechanical, and electronics engineering.</p>
+              <a href="./projects.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Know More</a>
             </div>
           </div>
         </div>
 
-        <!-- Second Row -->
-        <div class="row g-4 mt-3">
-          <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-            <div class="service-item text-center pt-3 h-100">
-              <div class="p-4 h-100 d-flex flex-column">
-                <i class="fa-solid fa-laptop-code fa-3x text-info mb-4"></i>
-                <h5 class="mb-3">MCA Projects</h5>
-                <p style="text-align: justify;">MCA projects provide practical exposure to software development, IT services, and application design, helping students build technical expertise and industry-ready.</p>
-                <!-- <a href="./internship.php" class="btn btn-primary mt-auto">Click Here</a> -->
-                <a href="./projects.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Know More</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.9s">
-            <div class="service-item text-center pt-3 h-100">
-              <div class="p-4 h-100 d-flex flex-column">
-                <i class="fa-solid fa-chalkboard-teacher fa-3x text-info mb-4"></i>
-                <h5 class="mb-3">Internship</h5>
-                <p style="text-align: justify;">Internships provide students with hands-on industry exposure, allowing them to apply academic knowledge in practical situations and gain professional experience.</p>
-                <!-- <a href="./internship.php" class="btn btn-primary mt-auto">Click Here</a> -->
-                <a href="./internship.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Know More</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="1.1s">
-            <div class="service-item text-center pt-3 h-100">
-              <div class="p-4 h-100 d-flex flex-column">
-                <i class="fa-solid fa-users fa-3x text-info mb-4"></i>
-                <!-- <i class="fa-solid fa-users fa-3x text-warning mb-4"></i> -->
-                <h5 class="mb-3">Corporate</h5>
-                <p style="text-align: justify;">Corporate training equips employees and graduates with the latest industry skills, bridging the gap between education and real-world professional demands.</p>
-                <!-- <a href="./internship.php" class="btn btn-primary mt-auto">Click Here</a> -->
-                <a href="./internship.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Know More</a>
-              </div>
+        <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+          <div class="service-item text-center pt-3 h-100">
+            <div class="p-4 h-100 d-flex flex-column">
+              <i class="fa-solid fa-microchip fa-3x text-primary mb-4"></i>
+              <h5 class="mb-3">M.TECH Projects</h5>
+              <p style="text-align: justify;">M.Tech projects provide students with in-depth research or industry exposure in specialized engineering fields such as computer science, electronics and etc.</p>
+              <!-- <a href="./internship.php" class="btn btn-primary mt-auto">Click Here</a> -->
+              <a href="./projects.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Know More</a>
             </div>
           </div>
         </div>
 
+        <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+          <div class="service-item text-center pt-3 h-100">
+            <div class="p-4 h-100 d-flex flex-column">
+              <i class="fa-solid fa-briefcase fa-3x text-info mb-4"></i>
+              <h5 class="mb-3">MBA Projects</h5>
+              <p style="text-align: justify;">MBA projects focus on providing students with real-world business experience in areas such as management, finance, marketing and operations.</p>
+              <!-- <a href="./internship.php" class="btn btn-primary mt-auto">Click Here</a> -->
+              <a href="./projects.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Know More</a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
 
-
-
-
-
-    <!-- Service End -->
-
-    <!-- About Start -->
-    <div class="container-xxl py-5">
-      <div class="container">
-        <div class="row g-5">
-          <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
-            <div class="position-relative h-100">
-              <img class="img-fluid position-absolute w-100 h-100" src="./img/index_about.jpg" alt="" style="object-fit: cover;">
+      <!-- Second Row -->
+      <div class="row g-4 mt-3">
+        <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+          <div class="service-item text-center pt-3 h-100">
+            <div class="p-4 h-100 d-flex flex-column">
+              <i class="fa-solid fa-laptop-code fa-3x text-info mb-4"></i>
+              <h5 class="mb-3">MCA Projects</h5>
+              <p style="text-align: justify;">MCA projects provide practical exposure to software development, IT services, and application design, helping students build technical expertise and industry-ready.</p>
+              <!-- <a href="./internship.php" class="btn btn-primary mt-auto">Click Here</a> -->
+              <a href="./projects.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Know More</a>
             </div>
           </div>
-          <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-            <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-            <h1 class="mb-4">Welcome to VsoftSolutions</h1>
-            <p class="mb-4">VSoft Solutions offers branch-wise B.Tech projects along with M.Tech, MBA, and MCA internships, providing students with practical industry exposure.</p>
-            <p class="mb-4">We deliver innovative and tailored solutions on a beautiful, user-friendly platform designed to support academic and professional growth.</p>
-            <p class="mb-4">Our goal is to empower students with real-world skills and project experience for a successful career. </p>
-            </p>
-            <div class="row gy-2 gx-4 mb-4">
-              <div class="col-sm-6">
-                <a href="./projects.php">
-                  <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>BTECH PROJECTS</p>
-                </a>
-              </div>
-              <div class="col-sm-6">
-                <a href="./projects.php">
-                  <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>MTECH PROJECTS</p>
-                </a>
-              </div>
-              <div class="col-sm-6">
-                <a href="./projects.php">
-                  <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>MBA PROJECTS</p>
-                </a>
-              </div>
-              <div class="col-sm-6">
-                <a href="./projects.php">
-                  <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>MCA PROJECTS</p>
-                </a>
-              </div>
-              <div class="col-sm-6">
-                <a href="./internship.php">
-                  <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>INTERNSHIP & CORPORATE</p>
-                </a>
-              </div>
-              <!-- <div class="col-sm-6">
-                              <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>International Certificate</p>
-                          </div> -->
+        </div>
+
+        <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.9s">
+          <div class="service-item text-center pt-3 h-100">
+            <div class="p-4 h-100 d-flex flex-column">
+              <i class="fa-solid fa-chalkboard-teacher fa-3x text-info mb-4"></i>
+              <h5 class="mb-3">Internship</h5>
+              <p style="text-align: justify;">Internships provide students with hands-on industry exposure, allowing them to apply academic knowledge in practical situations and gain professional experience.</p>
+              <!-- <a href="./internship.php" class="btn btn-primary mt-auto">Click Here</a> -->
+              <a href="./internship.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Know More</a>
             </div>
-            <a class="btn btn-primary py-3 px-5 mt-2" href="./about.php">Read More</a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="1.1s">
+          <div class="service-item text-center pt-3 h-100">
+            <div class="p-4 h-100 d-flex flex-column">
+              <i class="fa-solid fa-users fa-3x text-info mb-4"></i>
+              <!-- <i class="fa-solid fa-users fa-3x text-warning mb-4"></i> -->
+              <h5 class="mb-3">Corporate</h5>
+              <p style="text-align: justify;">Corporate training equips employees and graduates with the latest industry skills, bridging the gap between education and real-world professional demands.</p>
+              <!-- <a href="./internship.php" class="btn btn-primary mt-auto">Click Here</a> -->
+              <a href="./internship.php" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Know More</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- About End -->
+  </div>
+  <!-- Service End -->
 
-
-    <div class="container text-center">
-      <div class="row justify-content-center">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-          <h6 class="section-title bg-white text-center text-primary px-3">Categories</h6>
-          <h1 class="mb-5">Courses Categories</h1>
+  <!-- About Start -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+          <div class="position-relative h-100">
+            <img class="img-fluid position-absolute w-100 h-100" src="./img/index_about.jpg" alt="" style="object-fit: cover;">
+          </div>
         </div>
-
-        <!-- First row (2 images) -->
-        <div class="col-md-4 wow zoomIn" data-wow-delay="0.7s">
-          <a href="./projects.php" class="zoom-img">
-            <img src="./img/ai1.jpg" class="img-fluid rounded" alt="Artificial Intelligence">
-          </a>
-          <h5 class="mt-3">Artificial Intelligence</h5>
-        </div>
-
-        <div class="col-md-4 wow zoomIn" data-wow-delay="0.7s">
-          <a href="./projects.php" class="zoom-img">
-            <img src="img/cyber.jpg" class="img-fluid rounded" alt="Cyber Security">
-          </a>
-          <h5 class="mt-3">Cyber Security</h5>
-        </div>
-      </div>
-
-      <!-- Second row (2 images) -->
-      <div class="row justify-content-center mt-4">
-        <div class="col-md-4 wow zoomIn" data-wow-delay="0.7s">
-          <a href="./projects.php" class="zoom-img">
-            <img src="img/structural.jpg" class="img-fluid rounded" alt="Structural Engineering">
-          </a>
-          <h5 class="mt-3">Structural Engineering</h5>
-        </div>
-
-        <div class="col-md-4 wow zoomIn" data-wow-delay="0.7s">
-          <a href="./projects.php" class="zoom-img">
-            <img src="img/marketing3.jpg" class="img-fluid rounded" alt="Digital Marketing">
-          </a>
-          <h5 class="mt-3">Marketing</h5>
+        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+          <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
+          <h1 class="mb-4">Welcome to VsoftSolutions</h1>
+          <p class="mb-4">VSoft Solutions offers branch-wise B.Tech projects along with M.Tech, MBA, and MCA internships, providing students with practical industry exposure.</p>
+          <p class="mb-4">We deliver innovative and tailored solutions on a beautiful, user-friendly platform designed to support academic and professional growth.</p>
+          <p class="mb-4">Our goal is to empower students with real-world skills and project experience for a successful career. </p>
+          </p>
+          <div class="row gy-2 gx-4 mb-4">
+            <div class="col-sm-6">
+              <a href="./projects.php">
+                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>BTECH PROJECTS</p>
+              </a>
+            </div>
+            <div class="col-sm-6">
+              <a href="./projects.php">
+                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>MTECH PROJECTS</p>
+              </a>
+            </div>
+            <div class="col-sm-6">
+              <a href="./projects.php">
+                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>MBA PROJECTS</p>
+              </a>
+            </div>
+            <div class="col-sm-6">
+              <a href="./projects.php">
+                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>MCA PROJECTS</p>
+              </a>
+            </div>
+            <div class="col-sm-6">
+              <a href="./internship.php">
+                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>INTERNSHIP & CORPORATE</p>
+              </a>
+            </div>
+          </div>
+          <a class="btn btn-primary py-3 px-5 mt-2" href="./about.php">Read More</a>
         </div>
       </div>
     </div>
+  </div>
+  <!-- About End -->
 
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+        <h6 class="section-title bg-white text-center text-primary px-3">Categories</h6>
+        <h1 class="mb-5">Courses Categories</h1>
+      </div>
 
+      <!-- First row (2 images) -->
+      <div class="col-md-4 wow zoomIn" data-wow-delay="0.7s">
+        <a href="./projects.php" class="zoom-img">
+          <img src="./img/ai1.jpg" class="img-fluid rounded" alt="Artificial Intelligence">
+        </a>
+        <h5 class="mt-3">Artificial Intelligence</h5>
+      </div>
 
+      <div class="col-md-4 wow zoomIn" data-wow-delay="0.7s">
+        <a href="./projects.php" class="zoom-img">
+          <img src="img/cyber.jpg" class="img-fluid rounded" alt="Cyber Security">
+        </a>
+        <h5 class="mt-3">Cyber Security</h5>
+      </div>
+    </div>
 
+    <!-- Second row (2 images) -->
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-4 wow zoomIn" data-wow-delay="0.7s">
+        <a href="./projects.php" class="zoom-img">
+          <img src="img/structural.jpg" class="img-fluid rounded" alt="Structural Engineering">
+        </a>
+        <h5 class="mt-3">Structural Engineering</h5>
+      </div>
 
-    <!-- Categories Start -->
+      <div class="col-md-4 wow zoomIn" data-wow-delay="0.7s">
+        <a href="./projects.php" class="zoom-img">
+          <img src="img/marketing3.jpg" class="img-fluid rounded" alt="Digital Marketing">
+        </a>
+        <h5 class="mt-3">Marketing</h5>
+      </div>
+    </div>
+  </div>
 
+  <!-- Categories Start -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+        <h6 class="section-title bg-white text-center text-primary px-3">Courses</h6>
+        <h1 class="mb-5">Project Prices</h1>
+      </div>
+      <div class="row g-4">
+        <?php foreach ($packages as $package): ?>
+          <div class="col-lg-4 col-md-6 wow fadeInUp">
+            <div class="course-item bg-light">
+              <div class="position-relative overflow-hidden">
+                <?php if ($package['service_type'] === 'mini'): ?>
+                  <img class="img-fluid" src="img/mini1.jpg" alt="">
+                <?php elseif ($package['service_type'] === 'major'): ?>
+                  <img class="img-fluid" src="img/major1.jpg" alt="">
+                <?php else: ?>
+                  <img class="img-fluid" src="img/internship.jpg" alt="">
+                <?php endif; ?>
+              </div>
 
-    <div class="container-xxl py-5">
-      <div class="container">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-          <h6 class="section-title bg-white text-center text-primary px-3">Courses</h6>
-          <h1 class="mb-5">Project Prices</h1>
-        </div>
+              <h5 class="text-center mt-3 mb-2">
+                <?php echo ucfirst($package['package_name']); ?>
+                (<?php echo ucfirst($package['service_type']); ?>)
+              </h5>
 
-        <div class="row g-4">
-          <?php foreach ($packages as $package): ?>
-            <div class="col-lg-4 col-md-6 wow fadeInUp">
-              <div class="course-item bg-light">
-                <div class="position-relative overflow-hidden">
-                  <?php if ($package['service_type'] === 'mini'): ?>
-                    <img class="img-fluid" src="img/mini1.jpg" alt="">
-                  <?php elseif ($package['service_type'] === 'major'): ?>
-                    <img class="img-fluid" src="img/major1.jpg" alt="">
-                  <?php else: ?>
-                    <img class="img-fluid" src="img/internship.jpg" alt="">
-                  <?php endif; ?>
-                </div>
+              <div class="price-box text-center mt-3">
+                <span class="old-price">₹<?php echo number_format($package['original_price'], 2); ?></span>
+                <?php if (!empty($package['discounted_price']) && $package['discounted_price'] < $package['original_price']): ?>
+                  <?php
+                  $discountPercent = round((($package['original_price'] - $package['discounted_price']) / $package['original_price']) * 100);
+                  ?>
+                  <span class="discount"><?php echo $discountPercent; ?>% OFF</span>
+                  <br>
+                  <span class="new-price">₹<?php echo number_format($package['discounted_price'], 2); ?></span>
+                <?php else: ?>
+                  <span class="new-price">₹<?php echo number_format($package['original_price'], 2); ?></span>
+                <?php endif; ?>
 
+                <details class="bulk-offer mt-2">
+                  <summary>View Offers 🎉</summary>
+                  <div class="offers">
+                    <h6>🎉 Bulk Offers</h6>
+                    <div class="zoom">
+                      <ul style="list-style:none; padding:0; margin:0;">
+                        <?php
+                        // Split description into lines
+                        $lines = explode("\n", $package['description']);
+                        foreach ($lines as $line) {
+                          if (stripos($line, 'Buy') !== false) { // show only lines with "Buy"
+                            echo '<li style="display: block; font-weight:bold; margin-right:15px;">✅ '
+                              . htmlspecialchars($line) . '</li>';
+                          }
+                        }
+                        ?>
+                      </ul>
+                    </div>
+                  </div>
+                </details>
 
-                <h5 class="text-center mt-3 mb-2">
-                  <?php echo ucfirst($package['package_name']); ?>
-                  (<?php echo ucfirst($package['service_type']); ?>)
-                </h5>
+              </div>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  </div>
+  <!-- Courses End -->
 
+  <!-- Testimonial Start -->
+  <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h6 class="section-title bg-white text-center text-primary px-3">Testimonials</h6>
+        <h1>What Our Students Say</h1>
+      </div>
 
-                <div class="price-box text-center mt-3">
-                  <span class="old-price">₹<?php echo number_format($package['original_price'], 2); ?></span>
+      <div class="owl-carousel testimonial-carousel position-relative">
+        <?php if (!empty($testimonials)): ?>
+          <?php foreach ($testimonials as $row): ?>
+            <div class="testimonial-item text-center">
 
-                  <?php if (!empty($package['discounted_price']) && $package['discounted_price'] < $package['original_price']): ?>
-                    <?php
-                    $discountPercent = round((($package['original_price'] - $package['discounted_price']) / $package['original_price']) * 100);
-                    ?>
-                    <span class="discount"><?php echo $discountPercent; ?>% OFF</span>
-                    <br>
-                    <span class="new-price">₹<?php echo number_format($package['discounted_price'], 2); ?></span>
-                  <?php else: ?>
-                    <span class="new-price">₹<?php echo number_format($package['original_price'], 2); ?></span>
-                  <?php endif; ?>
-                    
-                      <details class="bulk-offer mt-2">
-                        <summary>View Offers 🎉</summary>
-                        <div class="offers">
-                          <h6>🎉 Bulk Offers</h6>
-                          <div class="zoom">
-                            <ul style="list-style:none; padding:0; margin:0;">
-                              <?php
-                              // Split description into lines
-                              $lines = explode("\n", $package['description']);
-                              foreach ($lines as $line) {
-                                if (stripos($line, 'Buy') !== false) { // show only lines with "Buy"
-                                  echo '<li style="display: block; font-weight:bold; margin-right:15px;">✅ '
-                                    . htmlspecialchars($line) . '</li>';
+              <!-- Student Photo -->
+              <img class="border rounded-circle p-2 mx-auto mb-3"
+                src="<?php echo htmlspecialchars($row['customer_photo_path'] ?: 'img/default-user.png'); ?>"
+                alt="<?php echo htmlspecialchars($row['customer_name']); ?>"
+                style="width: 80px; height: 80px; object-fit: cover;">
 
-                                  //   echo "<li >✅ " . htmlspecialchars($line) . "</li>";
-                                }
-                              }
-                              ?>
-                            </ul>
-                          </div>
-                        </div>
-                      </details>
-                  
-                </div>
+              <!-- Student Name -->
+              <h5 class="mb-1"><?php echo htmlspecialchars($row['customer_name']); ?></h5>
+
+              <!-- College / Designation -->
+              <?php if (!empty($row['designation'])): ?>
+                <p class="text-muted small"><?php echo htmlspecialchars($row['designation']); ?></p>
+              <?php else: ?>
+                <p class="text-muted small">Final Year Student</p>
+              <?php endif; ?>
+
+              <!-- Review -->
+              <div class="testimonial-text bg-light p-4 rounded review-box">
+                <p class="mb-0">
+                  <?php echo htmlspecialchars($row['review_text']); ?>
+                </p>
               </div>
             </div>
           <?php endforeach; ?>
-
-        </div>
+        <?php else: ?>
+          <p class="text-center text-muted">No student reviews available yet.</p>
+        <?php endif; ?>
       </div>
     </div>
-    <!-- Courses End -->
+  </div>
 
+  <!-- Footer Start -->
+  <?php require_once __DIR__ . "/footer.php"; ?>
+  <!-- Footer End -->
 
-
-    <!-- Testimonial Start -->
-
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-      <div class="container">
-        <div class="text-center mb-5">
-          <h6 class="section-title bg-white text-center text-primary px-3">Testimonials</h6>
-          <h1>What Our Students Say</h1>
-        </div>
-
-        <div class="owl-carousel testimonial-carousel position-relative">
-
-          <?php if (!empty($testimonials)): ?>
-            <?php foreach ($testimonials as $row): ?>
-              <div class="testimonial-item text-center">
-
-                <!-- Student Photo -->
-                <img class="border rounded-circle p-2 mx-auto mb-3"
-                  src="<?php echo htmlspecialchars($row['customer_photo_path'] ?: 'img/default-user.png'); ?>"
-                  alt="<?php echo htmlspecialchars($row['customer_name']); ?>"
-                  style="width: 80px; height: 80px; object-fit: cover;">
-
-                <!-- Student Name -->
-                <h5 class="mb-1"><?php echo htmlspecialchars($row['customer_name']); ?></h5>
-
-                <!-- College / Designation -->
-                <?php if (!empty($row['designation'])): ?>
-                  <p class="text-muted small"><?php echo htmlspecialchars($row['designation']); ?></p>
-                <?php else: ?>
-                  <p class="text-muted small">Final Year Student</p>
-                <?php endif; ?>
-
-                <!-- Review -->
-                <div class="testimonial-text bg-light p-4 rounded review-box">
-                  <p class="mb-0">
-                    <?php echo htmlspecialchars($row['review_text']); ?>
-                  </p>
-                </div>
-
-              </div>
-            <?php endforeach; ?>
-          <?php else: ?>
-            <p class="text-center text-muted">No student reviews available yet.</p>
-          <?php endif; ?>
-
-        </div>
-      </div>
-    </div>
-
-
-    <!-- Footer Start -->
-
-    <?php require_once __DIR__ . "/footer.php"; ?>
-
-    <!-- Footer End -->
-
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-
-
-
-
-
-        <!-- JavaScript Libraries -->
-        <!-- jQuery (for OwlCarousel only, load once) -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-        <!-- Owl Carousel -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
-        <!-- Bootstrap Bundle (with Popper) -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-        <!-- Other libraries -->
-        <script src="./lib/wow/wow.min.js"></script>
-        <script src="./lib/easing/easing.min.js"></script>
-        <script src="./lib/waypoints/waypoints.min.js"></script>
-
-        <!-- Template Javascript -->
-        <script src="./js/main.js"></script>
-
-        <!-- Auto-close navbar on link click (mobile only) -->
-        <script>
-            document.querySelectorAll('.navbar-nav .nav-link').forEach(function (link) {
-                link.addEventListener('click', function () {
-                    let navbarCollapse = document.getElementById('navbarCollapse');
-                    if (navbarCollapse.classList.contains('show')) {
-                        let bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-                        bsCollapse.hide();
-                    }
-                });
-            });
-        </script>
-      
-
-      
-
-    </body>
+  <!-- Back to Top -->
+  <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+</body>
 
 </html>

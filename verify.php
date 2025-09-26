@@ -46,12 +46,15 @@ $conn->close();
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Email Verification</title>
 </head>
+
 <body>
     <p><?php echo htmlspecialchars($message); ?></p>
     <p><a href="login.php">Go to Login</a></p>
 </body>
+
 </html>
