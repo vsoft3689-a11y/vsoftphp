@@ -44,6 +44,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects Page</title>
+  <!-- Google Web Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/projects.css" rel="stylesheet">
   <style>
     table {
       width: 100%;
@@ -71,23 +77,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       background: #f1f1f1;
     }
   </style>
-
-  <!-- Favicon -->
-  <link href="img/favicon.ico" rel="icon">
-
-  <!-- Google Web Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Icon Font Stylesheet -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-  <!-- Bootstrap -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <link href="css/style.css" rel="stylesheet">
-  <link href="css/projects.css" rel="stylesheet">
 </head>
 
 <body>
@@ -209,18 +198,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <!-- Back to Top -->
   <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-
-  <!-- JS Libraries -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/wow/wow.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/waypoints/waypoints.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-  <!-- Custom JS -->
-  <script src="js/main.js"></script>
-
   <script>
     function updateBranches() {
       let degree = document.getElementById("degree").value;
