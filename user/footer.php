@@ -1,5 +1,5 @@
 <?php
-include_once __DIR__ . "/config/database.php";
+include_once "../config/database.php";
 
 $conn = (new Database())->connect();
 
@@ -56,12 +56,12 @@ if ($result && $result->num_rows > 0) {
             <div class="col-lg-3 col-md-6">
                 <h4 class="text-white mb-3">Gallery</h4>
                 <div class="row g-2 pt-2">
-                    <div class="col-4"><a href="img/major1.jpg"><img class="img-fluid bg-light p-1" src="img/major1.jpg" alt="Gallery Image 1"></a></div>
-                    <div class="col-4"><a href="img/mini1.jpg"><img class="img-fluid bg-light p-1" src="img/mini1.jpg" alt="Gallery Image 2"></a></div>
-                    <div class="col-4"><a href="img/internship.jpg"><img class="img-fluid bg-light p-1" src="img/internship.jpg" alt="Gallery Image 3"></a></div>
-                    <div class="col-4"><a href="img/cyber.jpg"><img class="img-fluid bg-light p-1" src="img/cyber.jpg" alt="Gallery Image 4"></a></div>
-                    <div class="col-4"><a href="img/structural.jpg"><img class="img-fluid bg-light p-1" src="img/structural.jpg" alt="Gallery Image 5"></a></div>
-                    <div class="col-4"><a href="img/mini1.jpg"><img class="img-fluid bg-light p-1" src="img/mini1.jpg" alt="Gallery Image 6"></a></div>
+                    <div class="col-4"><a href="../img/major1.jpg"><img class="img-fluid bg-light p-1" src="../img/major1.jpg" alt="Gallery Image 1"></a></div>
+                    <div class="col-4"><a href="../img/mini1.jpg"><img class="img-fluid bg-light p-1" src="../img/mini1.jpg" alt="Gallery Image 2"></a></div>
+                    <div class="col-4"><a href="../img/internship.jpg"><img class="img-fluid bg-light p-1" src="../img/internship.jpg" alt="Gallery Image 3"></a></div>
+                    <div class="col-4"><a href="../img/cyber.jpg"><img class="img-fluid bg-light p-1" src="../img/cyber.jpg" alt="Gallery Image 4"></a></div>
+                    <div class="col-4"><a href="../img/structural.jpg"><img class="img-fluid bg-light p-1" src="../img/structural.jpg" alt="Gallery Image 5"></a></div>
+                    <div class="col-4"><a href="../img/mini1.jpg"><img class="img-fluid bg-light p-1" src="../img/mini1.jpg" alt="Gallery Image 6"></a></div>
                 </div>
             </div>
 

@@ -48,6 +48,9 @@ while ($row = $result->fetch_assoc()) {
   <meta charset="utf-8">
   <title>VsoftSolutions</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
   <style>
     .testimonial-item {
       display: flex;

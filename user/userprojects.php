@@ -145,7 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   </main>
 
-  <?php include '../footer.php'; ?>
+  <?php include './footer.php'; ?>
 
   <script>
     function updateBranches() {

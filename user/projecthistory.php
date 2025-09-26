@@ -98,7 +98,7 @@ $projects = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
   </div>
 
   <!-- Footer Start -->
-  <?php include '../footer.php'; ?>
+  <?php include './footer.php'; ?>
 </body>
 
 </html>
